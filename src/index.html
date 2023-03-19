@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohérence Cardiaque</title>
+    <link rel="icon" type="image/png" href="/src/img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img class="logo" src="/src/img/logo.svg" alt="Logo de la marque">
+            <h1 class="brand-name">Breath.App</h1>
+        </div>
+    </header>
+    <main>
+        <div id="circle">
+            <svg id="progress-circle" viewBox="0 0 100 100">
+              <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      stroke="rgba(13, 13, 13, 0.7)"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-dasharray="283"
+                      stroke-dashoffset="283"
+              />
+            </svg>
+            <span id="instruction"></span>
+          </div>
+          
+          
+
+        <section id="timer" class="centered-container">
+            <h2>Click to Start</h2>
+            <button id="start-btn">
+                <i id="play-icon" class="fas fa-play"></i>
+                <i id="stop-icon" class="fas fa-stop" style="display:none;"></i>
+            </button>
+        </section>
+    </main>
+    <footer>
+        <p>Pratiquez la cohérence cardiaque 5minutes 3 fois par jour pour réduire le stress, l'anxiété et améliorer votre bien-être.</p>
+    </footer>
+
+</body>
+    <script type="module" src="../app.js"></script>
+</html>

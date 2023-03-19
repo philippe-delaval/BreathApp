@@ -1,6 +1,8 @@
 const circle = document.getElementById("circle");
 const instruction = document.getElementById("instruction");
 const startBtn = document.getElementById("start-btn");
+const playIcon = document.getElementById("play-icon");
+const stopIcon = document.getElementById("stop-icon");
 
 let isRunning = false;
 let breatheInTimeout, breatheOutTimeout;
@@ -18,17 +20,18 @@ function updateProgressBar() {
 
 function breatheIn() {
   instruction.textContent = "Inspirer";
-  circle.style.animation = "breathe-in 5s linear infinite";
+  circle.style.animation = "breathe-in 5s linear infinite both";
 }
 
 function breatheOut() {
   instruction.textContent = "Expirer";
-  circle.style.animation = "breathe-out 5s linear infinite";
+  circle.style.animation = "breathe-out 5s linear infinite both";
 }
 
 function startBreathing() {
   isRunning = true;
-  startBtn.textContent = "Arrêter";
+  playIcon.style.display = "none";
+  stopIcon.style.display = "inline-block";
     breatheIn();
     breatheInTimeout = setTimeout(() => {
       breatheOut();
@@ -53,14 +56,15 @@ function startBreathing() {
 
 function stopBreathing() {
   isRunning = false;
-  startBtn.textContent = "Démarrer";
+  playIcon.style.display = "inline-block";
+  stopIcon.style.display = "none";
   clearTimeout(breatheInTimeout);
   clearTimeout(breatheOutTimeout);
   clearInterval(countdownInterval);
   remainingTime = totalTime;
   updateProgressBar();
   circle.style.animation = "";
-  instruction.textContent = "- - - - -";
+  instruction.textContent = "Terminé";
 }
 
 startBtn.addEventListener("click", () => {
