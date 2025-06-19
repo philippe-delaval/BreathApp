@@ -1,0 +1,767 @@
+/* Extensions CSS - BreathApp */
+/* Styles pour les nouvelles fonctionnalités en harmonie avec le design existant */
+
+/* Variables de couleurs existantes */
+:root {
+    --primary-color: #A68A56;
+    --primary-hover: rgb(140, 117, 73);
+    --dark-color: #0D0D0D;
+    --light-color: #F2F2F2;
+    --background-color: rgba(140, 117, 73, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --font-family: 'Audrey', sans-serif;
+}
+
+/* Bouton paramètres dans l'en-tête */
+.header-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.header-btn:hover {
+    background-color: var(--background-color);
+    color: var(--primary-hover);
+    transform: rotate(90deg);
+}
+
+/* Compteur de respirations */
+.counter-overlay {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.2s ease;
+    z-index: 2;
+}
+
+#breath-counter {
+    transition: transform 0.2s ease;
+}
+
+/* Informations de session */
+.session-info {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-family: var(--font-family);
+}
+
+/* Panneaux de paramètres et progression */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.panel-content {
+    background-color: var(--light-color);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid var(--background-color);
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--background-color);
+    color: var(--primary-hover);
+}
+
+/* Sections des paramètres */
+.settings-section {
+    padding: 20px;
+    border-bottom: 1px solid var(--background-color);
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+}
+
+.settings-section h4 {
+    margin: 0 0 15px 0;
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-section h4 i {
+    color: var(--primary-color);
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-item label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-family);
+    color: var(--dark-color);
+}
+
+.setting-item input[type="checkbox"] {
+    accent-color: var(--primary-color);
+}
+
+.setting-item input[type="range"] {
+    flex: 1;
+    margin-left: 15px;
+    accent-color: var(--primary-color);
+}
+
+.setting-item select {
+    padding: 8px 12px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    font-family: var(--font-family);
+}
+
+/* Grille des rappels */
+.reminders-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.reminder-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    font-family: var(--font-family);
+}
+
+.reminder-time {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.reminder-label {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.reminder-toggle {
+    accent-color: var(--primary-color);
+}
+
+/* Résumé de progression */
+.progress-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.progress-stat {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.progress-stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: var(--font-family);
+}
+
+.progress-stat-label {
+    font-size: 0.8rem;
+    color: var(--dark-color);
+    margin-top: 5px;
+}
+
+/* Boutons secondaires */
+.secondary-btn {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--light-color);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Onglets de progression */
+.progress-tabs {
+    display: flex;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-family: var(--font-family);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.progress-content {
+    padding: 20px;
+}
+
+/* Overlay de fin de session */
+.session-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+}
+
+.overlay-content {
+    background-color: var(--light-color);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.overlay-content h3 {
+    margin: 0 0 20px 0;
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 1.8rem;
+}
+
+.session-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.result-item {
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.result-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: var(--font-family);
+}
+
+.result-label {
+    font-size: 0.8rem;
+    color: var(--dark-color);
+    margin-top: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .panel-content {
+        width: 95%;
+        border-radius: 15px;
+    }
+    
+    .panel-header {
+        padding: 15px;
+    }
+    
+    .settings-section {
+        padding: 15px;
+    }
+    
+    .counter-overlay {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+        top: -12px;
+        right: -12px;
+    }
+    
+    .session-results {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .panel-content {
+        width: 70%;
+        max-width: 600px;
+    }
+    
+    .progress-summary {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .session-results {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.settings-panel {
+    animation: fadeIn 0.3s ease;
+}
+
+.panel-content {
+    animation: slideInUp 0.4s ease;
+}
+
+.overlay-content {
+    animation: slideInUp 0.5s ease;
+}
+
+/* Nouvelles technologies */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Statut de synchronisation */
+.sync-status {
+    padding: 8px 12px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--dark-color);
+    font-family: var(--font-family);
+}
+
+.sync-status.connected {
+    color: #4CAF50;
+}
+
+.sync-status.syncing {
+    color: #FF9800;
+}
+
+.sync-status.error {
+    color: #F44336;
+}
+
+/* Actions de session */
+.session-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.session-actions .secondary-btn,
+.session-actions .primary-btn {
+    flex: 1;
+    max-width: 140px;
+}
+
+/* Conteneurs de graphiques */
+.chart-containers {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chart-container {
+    background-color: var(--light-color);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Bouton d'installation PWA */
+.install-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    display: none;
+    align-items: center;
+    gap: 8px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.install-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* Bannière de mise à jour */
+.update-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 12px;
+    text-align: center;
+    z-index: 1002;
+    font-family: var(--font-family);
+}
+
+.update-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.update-btn,
+.update-dismiss {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--light-color);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.update-btn:hover,
+.update-dismiss:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Statut réseau */
+.network-status {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+    z-index: 1003;
+    display: none;
+}
+
+.network-status.success {
+    background-color: #4CAF50;
+}
+
+.network-status.warning {
+    background-color: #FF9800;
+}
+
+.network-status.error {
+    background-color: #F44336;
+}
+
+/* Notifications PWA */
+.pwa-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--light-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    max-width: 300px;
+    z-index: 1004;
+    font-family: var(--font-family);
+}
+
+.pwa-notification.success {
+    border-left: 4px solid #4CAF50;
+}
+
+.pwa-notification.warning {
+    border-left: 4px solid #FF9800;
+}
+
+.pwa-notification.error {
+    border-left: 4px solid #F44336;
+}
+
+.notification-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.notification-content h4 {
+    margin: 0 0 8px 0;
+    color: var(--dark-color);
+    font-size: 1rem;
+}
+
+.notification-content p {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+}
+
+/* Accessibilité */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+    font-family: var(--font-family);
+}
+
+.skip-link:focus {
+    top: 6px !important;
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Thème sombre */
+[data-theme="dark"] {
+    --primary-color: #D4B26A;
+    --primary-hover: #B8945C;
+    --dark-color: #F2F2F2;
+    --light-color: #0D0D0D;
+    --background-color: rgba(212, 178, 106, 0.1);
+}
+
+[data-theme="dark"] body {
+    background-color: #1a1a1a;
+    color: var(--dark-color);
+}
+
+/* Contraste élevé */
+.high-contrast * {
+    border-color: #000000 !important;
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+.high-contrast button,
+.high-contrast .primary-btn {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* Mouvement réduit */
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+/* Focus visible */
+.focused,
+:focus {
+    outline: 3px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Responsive pour graphiques */
+@media (max-width: 480px) {
+    .chart-containers {
+        grid-template-columns: 1fr;
+    }
+    
+    .install-button {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .pwa-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .chart-containers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .chart-containers {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

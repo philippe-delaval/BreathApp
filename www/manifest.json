@@ -1,0 +1,44 @@
+{
+  "name": "BreathApp - Cohérence Cardiaque",
+  "short_name": "BreathApp",
+  "description": "Application de cohérence cardiaque pour réduire le stress et améliorer le bien-être",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#A68A56",
+  "background_color": "#F2F2F2",
+  "categories": ["health", "wellness", "meditation"],
+  "lang": "fr",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "src/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Commencer une séance",
+      "short_name": "Séance",
+      "description": "Démarrer immédiatement une séance de 5 minutes",
+      "url": "/?action=start",
+      "icons": [{
+        "src": "src/img/logo.svg",
+        "sizes": "any"
+      }]
+    },
+    {
+      "name": "Voir les statistiques",
+      "short_name": "Stats",
+      "description": "Consulter votre progression",
+      "url": "/?action=stats",
+      "icons": [{
+        "src": "src/img/logo.svg",
+        "sizes": "any"
+      }]
+    }
+  ],
+  "prefer_related_applications": false
+}

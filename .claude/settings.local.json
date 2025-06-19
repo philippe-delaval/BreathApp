@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npx cap init:*)",
+      "Bash(npx cap add:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(npx cap:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run serve:*)"
+    ],
+    "deny": []
+  }
+}

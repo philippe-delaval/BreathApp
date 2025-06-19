@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#A68A56">
+    <meta name="description" content="Application de cohérence cardiaque pour réduire le stress et améliorer le bien-être">
+    <title>Cohérence Cardiaque</title>
+    <link rel="icon" type="image/png" href="./src/img/favicon.png">
+    <link rel="manifest" href="./manifest-clean.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/extensions.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img class="logo" src="./src/img/logo.svg" alt="Logo de la marque">
+            <h1 class="brand-name">Breath.App</h1>
+            <div class="header-actions">
+                <button id="accessibility-btn" class="header-btn" title="Accessibilité" style="display:none;">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <button id="settings-btn" class="header-btn" title="Paramètres">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="circle">
+            <svg id="progress-circle" viewBox="0 0 100 100">
+              <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      stroke="rgba(13, 13, 13, 0.7)"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-dasharray="283"
+                      stroke-dashoffset="283"
+              />
+            </svg>
+            <span id="instruction"></span>
+            <div id="breath-counter-display" class="counter-overlay">
+                <span id="breath-counter">0</span>
+            </div>
+          </div>
+          
+          
+
+        <section id="timer" class="centered-container">
+            <h2 id="session-title">Click to Start</h2>
+            <div id="session-info" class="session-info" style="display:none;">
+                <span id="today-sessions">0</span> séances aujourd'hui
+            </div>
+            <button id="start-btn">
+                <i id="play-icon" class="fas fa-play"></i>
+                <i id="stop-icon" class="fas fa-stop" style="display:none;"></i>
+            </button>
+        </section>
+    </main>
+    <footer>
+        <p>Pratiquez la cohérence cardiaque 5minutes 3 fois par jour pour réduire le stress, l'anxiété et améliorer votre bien-être.</p>
+    </footer>
+
+    
+    <!-- Panneau de paramètres -->
+    <div id="settings-panel" class="settings-panel" style="display:none;">
+        <div class="panel-content">
+            <div class="panel-header">
+                <h3>Paramètres</h3>
+                <button id="close-settings" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="settings-section">
+                <h4><i class="fas fa-bell"></i> Rappels</h4>
+                <div id="reminders-config" class="reminders-grid">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4><i class="fas fa-volume-up"></i> Audio</h4>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="audio-enabled"> 
+                        Guidage sonore
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>Volume</label>
+                    <input type="range" id="audio-volume" min="0" max="100" value="30">
+                </div>
+                <div class="setting-item">
+                    <label>Rythme</label>
+                    <select id="audio-rhythm">
+                        <option value="standard">Standard (5s/5s)</option>
+                        <option value="slow">Lent (6s/6s)</option>
+                        <option value="fast">Rapide (4s/4s)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4><i class="fas fa-chart-line"></i> Progression</h4>
+                <div id="progress-summary" class="progress-summary">
+                    <!-- Généré dynamiquement -->
+                </div>
+                <button id="view-progress" class="secondary-btn">
+                    <i class="fas fa-eye"></i> Voir l'historique
+                </button>
+            </div>
+            
+            <div class="settings-section">
+                <h4><i class="fas fa-cloud"></i> Synchronisation</h4>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="cloud-sync-enabled"> 
+                        Synchronisation cloud
+                    </label>
+                </div>
+                <div id="sync-status" class="sync-status">
+                    <span>Non connecté</span>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4><i class="fas fa-microphone"></i> Détection</h4>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="webrtc-enabled"> 
+                        Détection automatique de la respiration
+                    </label>
+                </div>
+                <button id="calibrate-breath" class="secondary-btn" style="display:none;">
+                    <i class="fas fa-calibrate"></i> Calibrer
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Panneau de progression -->
+    <div id="progress-panel" class="settings-panel" style="display:none;">
+        <div class="panel-content">
+            <div class="panel-header">
+                <h3>Progression</h3>
+                <button id="close-progress" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="progress-tabs">
+                <button class="tab-btn active" data-period="today">Aujourd'hui</button>
+                <button class="tab-btn" data-period="week">Semaine</button>
+                <button class="tab-btn" data-period="month">Mois</button>
+            </div>
+            
+            <div id="progress-content" class="progress-content">
+                <!-- Généré dynamiquement -->
+            </div>
+            
+            <div class="chart-containers">
+                <div class="chart-container">
+                    <canvas id="progress-chart" width="400" height="200" data-chart="progress"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="weekly-chart" width="400" height="200" data-chart="weekly"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="breathing-chart" width="400" height="200" data-chart="breathing"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay de fin de session -->
+    <div id="session-complete" class="session-overlay" style="display:none;">
+        <div class="overlay-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Séance terminée !</h3>
+            <div id="session-results" class="session-results">
+                <!-- Généré dynamiquement -->
+            </div>
+            <div class="session-actions">
+                <button id="share-session" class="secondary-btn">
+                    <i class="fas fa-share"></i> Partager
+                </button>
+                <button id="close-session-complete" class="primary-btn">
+                    Continuer
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+    <!-- Core Scripts -->
+    <script type="module" src="./app.js"></script>
+    
+    <!-- Enhanced Features (Lazy Loaded) -->
+    <script type="module" src="./modules/performance-optimizer-simple.js"></script>
+    <script type="module" src="./modules/pwa-manager.js"></script>
+    <script type="module" src="./modules/indexeddb-manager.js"></script>
+    <script type="module" src="./modules/accessibility-i18n.js"></script>
+    <script type="module" src="./modules/integration-manager.js"></script>
+    
+    <!-- Original Features -->
+    <script type="module" src="./modules/reminders.js"></script>
+    <script type="module" src="./modules/breath-counter.js"></script>
+    <script type="module" src="./modules/progress-tracker.js"></script>
+    <script type="module" src="./modules/audio-guide.js"></script>
+    <script type="module" src="./js/app-extensions.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw-clean.js')
+                    .then(registration => console.log('[SW] Registered'))
+                    .catch(error => console.log('[SW] Registration failed'));
+            });
+        }
+    </script>
+</html>

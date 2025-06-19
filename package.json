@@ -1,0 +1,30 @@
+{
+  "name": "breath-app",
+  "version": "1.0.0",
+  "description": "Application de cohérence cardiaque",
+  "main": "app.js",
+  "scripts": {
+    "build": "cp index.html www/ && cp app.js www/ && cp style.css www/ && cp manifest-clean.json www/ && cp sw-clean.js www/ && cp -r src www/ && cp -r modules www/ && cp -r styles www/ && cp -r js www/ && cp -r workers www/",
+    "serve": "npx http-server . -p 3000",
+    "cap:add": "npx cap add",
+    "cap:copy": "npx cap copy",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open",
+    "cap:run": "npx cap run",
+    "ios": "npm run build && npx cap copy ios && npx cap open ios",
+    "android": "npm run build && npx cap copy android && npx cap open android"
+  },
+  "keywords": ["breathing", "cardiac-coherence", "meditation", "mobile-app"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "^5.5.1",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "@capacitor/core": "^5.5.1",
+    "@capacitor/ios": "^5.5.1",
+    "@capacitor/android": "^5.5.1",
+    "@capacitor/local-notifications": "^5.0.6"
+  }
+}
